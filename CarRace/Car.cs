@@ -27,7 +27,7 @@ namespace CarRace
             {
                 Distance += Speed; 
 
-                Console.WriteLine($"{Name} är på {Distance} Meters.");
+                Console.WriteLine($"{Name} är på {Distance} Meter.");
 
                 RandomEvent(); 
                 Thread.Sleep(1000); 
@@ -44,7 +44,7 @@ namespace CarRace
                 }
             }
 
-            Console.Clear();
+           
             Console.WriteLine($"\u001b[34m{Name} har avslutat tävlingen!\u001b[0m");
            
         }

@@ -4,28 +4,22 @@
     {
         static void Main(string[] args)
         {
-            List<Car> cars = new List<Car>
-        {
-            new Car("Ferrari", 120),
-            new Car("BMW", 120)
-            // Add more cars here
-        };
+        
+            Car car1=new Car("ferrari",120);
+            Car car2 = new Car("BMW", 120);
 
-            List<Thread> threads = new List<Thread>();
-
-            foreach (var car in cars)
-            {
-                Thread t = new Thread(car.Move);
-                threads.Add(t);
+           
+                Thread t = new Thread(car1.Move);
+                Thread t2 = new Thread(car2.Move);
+             
                 t.Start();
-            }
+                t2.Start();
+          
 
-            foreach (var thread in threads)
-            {
-                thread.Join(); 
-            }
+                t.Join();
+                t2.Join();
 
-            Console.WriteLine("Race finished for all cars!");
+            Console.WriteLine($"{car1.Name} & {car2.Name} har avslutat Tävlingen!");
         }
     }
 }
