@@ -11,7 +11,7 @@ namespace CarRace
     {
 
         public string Name { get; }
-        public int Distance { get; private set;  }
+        public int Distance { get; set; }
         public int Speed { get; set; }
 
         public Car(string name, int speed)
@@ -81,11 +81,30 @@ namespace CarRace
 
                 if (key == ConsoleKey.Enter)
                 {
-                    Console.WriteLine("\u001b[32m Läget i tävlingen . Vissar Tävling status...\u001b[0m");
+                    Console.WriteLine("\u001b[32mLäget i tävlingen . Vissar Tävling status...\u001b[0m");
                     DisplayRaceStatus();
                 }
             }
         }
+
+        public static void EscapeKeyCall()
+        {
+            Console.WriteLine("\n\n");
+            Console.WriteLine("\t\t\t\u001b[0m Tryck \u001b[34m ESC \u001b[0m att gå tillbacka till Huvud Meny");
+
+            ConsoleKey key;
+            do
+            {
+                key = Console.ReadKey().Key;
+
+                if (key != ConsoleKey.Escape)
+                {
+                    Console.WriteLine("\n\t\t\t\u001b[31m Fel Nyckel Trycket. Tryck \u001b[34m ESC\u001b[0m \u001b[31m att gå tillbacka till Huvud Meny.\t\t\t\u001b[0m");
+                }
+                Console.Clear();
+            } while (key != ConsoleKey.Escape);
+        }
+
     }
-  
+
 }

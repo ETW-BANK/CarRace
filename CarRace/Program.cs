@@ -4,35 +4,49 @@
     {
         static void Main(string[] args)
         {
-        
-            Car car1=new Car("Ferrari",120);
-            Car car2 = new Car("BMW", 120);
+            int choice;
 
-           
-                Thread t = new Thread(car1.Move);
-                Thread t2 = new Thread(car2.Move);
+            do {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("\n\n");
+                Console.WriteLine("\t\t\t\t ====================================");
              
-                t.Start();
-                t2.Start();
+                Console.WriteLine($"\t\t\t\t   {"1. Tryck 1 att Starata Tävlingen"}");
+                Console.WriteLine($"\t\t\t\t   {"2. Tryck 2 att Avsluta"}");
+
+                Console.WriteLine("\t\t\t\t ===================================\n\n");
+                Console.WriteLine($"\t\t\t{"\u001b[32mEnter\u001b[0m. Tryck ENTER att se Bil Satatus under Tävlingen"}\n\n");
+
+                Console.ResetColor();
 
 
-            t.Join();
-            t2.Join();
+                if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+                {
 
+                    Console.WriteLine("\n\t\t\t\t \u001b[31m Ogiltigt val . Vänligen välja 1-3.\u001b[0m \n");
 
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    continue;
+                }
 
-            if (t2.ThreadState == ThreadState.Stopped)
+                switch (choice)
             {
-                Console.WriteLine($"\u001b[36m{car2.Name}\u001b[0m \u001b[34m HAR VUNNIT TÄVLINGEN\u001b[0m \n");
-                
+                case 0:
+                Environment.Exit(0);
+                break;
+                case 1:
+                Race.Races();
+                break;
+            
+                default:
+                Console.WriteLine("wrong choice");
+                Thread.Sleep(1000);
+                Console.Clear();
+                     
+                break;
             }
-            else if (t.ThreadState == ThreadState.Stopped)
-            {
-                Console.WriteLine($"\u001b[36m{car1.Name}\u001b[0m \u001b[34m HAR VUNNIT TÄVLINGEN\u001b[0m \n");
-
-            }
-
-            Console.WriteLine($"\u001b[32m{car1.Name} & {car2.Name} har avslutat Tävlingen!\u001b[0m");
+         }while (choice != 3);
         }
     }
 }
