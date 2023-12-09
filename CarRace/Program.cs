@@ -14,18 +14,19 @@
              
                 t.Start();
                 t2.Start();
-          
 
-                t.Join();
-                t2.Join();
 
-            Console.WriteLine("\n");
+            t.Join();
+            t2.Join();
 
-            if (t2.ThreadState==0)
+
+
+            if (t2.ThreadState == ThreadState.Stopped)
             {
                 Console.WriteLine($"\u001b[36m{car2.Name}\u001b[0m \u001b[34m HAR VUNNIT TÄVLINGEN\u001b[0m \n");
+                
             }
-            else
+            else if (t.ThreadState == ThreadState.Stopped)
             {
                 Console.WriteLine($"\u001b[36m{car1.Name}\u001b[0m \u001b[34m HAR VUNNIT TÄVLINGEN\u001b[0m \n");
 

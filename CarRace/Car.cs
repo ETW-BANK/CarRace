@@ -25,23 +25,14 @@ namespace CarRace
         {
             while (Distance < 10000) 
             {
-                Distance += Speed; 
+                Distance = Distance+Speed; 
 
                 Console.WriteLine($"{Name} är på {Distance} Meter.");
 
                 RandomEvent(); 
-                Thread.Sleep(1000); 
+                Thread.Sleep(1000);
 
-                if (Console.KeyAvailable)
-                {
-                   ConsoleKey key = Console.ReadKey().Key;
-
-                    if (key==ConsoleKey.Enter)
-                    {
-                        Console.WriteLine("\u001b[32m Läget i tävlingen . Vissar Tävling status...\u001b[0m");
-                        DisplayRaceStatus();
-                    }
-                }
+                Keypress();
             }
 
            
@@ -65,12 +56,12 @@ namespace CarRace
             }
             else if (chance <= 5) 
             {
-                Console.WriteLine($"\u001b[31m {Name} Behöver tvätta vindrutan, stannar 10 sekunder\u001b[0m");
+                Console.WriteLine($"\u001b[31m{Name} Behöver tvätta vindrutan, stannar 10 sekunder\u001b[0m");
                 Thread.Sleep(1000); 
             }
             else if (chance <= 10) 
             {
-                Console.WriteLine($"\u001b[31m {Name} Hastigheten på bilen sänks med 1km/h\u001b[0m");
+                Console.WriteLine($"\u001b[31m{Name} Hastigheten på bilen sänks med 1km/h\u001b[0m");
                 Speed--; 
             }
         }
@@ -79,6 +70,21 @@ namespace CarRace
             Console.WriteLine($"Tävling Status för {Name}:");
             Console.WriteLine($"Sträka: {Distance} Meters");
             Console.WriteLine($"Hastighet: {Speed} km/h");
+        }
+
+        private void Keypress()
+        {
+
+            if (Console.KeyAvailable)
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+
+                if (key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine("\u001b[32m Läget i tävlingen . Vissar Tävling status...\u001b[0m");
+                    DisplayRaceStatus();
+                }
+            }
         }
     }
   
