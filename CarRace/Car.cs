@@ -9,11 +9,12 @@ namespace CarRace
 {
     internal class Car
     {
-
+        // Class representing a car in the race
         public string Name { get; }
         public int Distance { get; set; }
         public int Speed { get; set; }
 
+        // Properties to get the car name, distance, and speed
         public Car(string name, int speed)
         {
             Name = name;
@@ -21,12 +22,14 @@ namespace CarRace
             Speed = speed;
         }
 
+        // Method to simulate the movement of the car in the race
         public void Move()
         {
             while (Distance < 10000) 
             {
-                Distance = Distance+Speed; 
+                Distance = Distance+Speed;
 
+                // Display race progress and handle random events
                 Console.WriteLine($"{Name} är på {Distance} Meter.");
 
                 RandomEvent(); 
@@ -39,6 +42,7 @@ namespace CarRace
             Console.WriteLine($"\u001b[34m{Name} har avslutat tävlingen!\u001b[0m");
            
         }
+        // Method to introduce random events during the race
         private void RandomEvent()
         {
             Random random = new Random();
@@ -65,6 +69,7 @@ namespace CarRace
                 Speed--; 
             }
         }
+        // Method to check for user input and display race status on Enter key press
         private void DisplayRaceStatus()
         {
             Console.WriteLine($"Tävling Status för {Name}:");
@@ -87,6 +92,8 @@ namespace CarRace
             }
         }
 
+
+        // Method to provide an escape key functionality to get back to the main menu
         public static void EscapeKeyCall()
         {
             Console.WriteLine("\n\n");

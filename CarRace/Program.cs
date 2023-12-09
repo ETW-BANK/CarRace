@@ -20,10 +20,10 @@
                 Console.ResetColor();
 
 
-                if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 3)
+                if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 2)
                 {
 
-                    Console.WriteLine("\n\t\t\t\t \u001b[31m Ogiltigt val . Vänligen välja 1-3.\u001b[0m \n");
+                    Console.WriteLine("\n\t\t\t\t \u001b[31m Ogiltigt val . Vänligen välja 1-2.\u001b[0m \n");
 
                     Thread.Sleep(2000);
                     Console.Clear();
@@ -32,13 +32,14 @@
 
                 switch (choice)
             {
-                case 0:
-                Environment.Exit(0);
-                break;
+               
                 case 1:
                 Race.Races();
                 break;
-            
+                case 2:
+                Environment.Exit(2);
+                break;
+
                 default:
                 Console.WriteLine("wrong choice");
                 Thread.Sleep(1000);
@@ -46,7 +47,7 @@
                      
                 break;
             }
-         }while (choice != 3);
+         }while (choice != 2);
         }
     }
 }
